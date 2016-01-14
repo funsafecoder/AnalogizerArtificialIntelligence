@@ -1,0 +1,76 @@
+<html>
+<head>
+<script>
+$ = function(val){
+	return document.querySelectorAll(val);
+}
+
+var yesdata = [];
+var nodata = [];
+var last = [0, 0, 0];
+
+function color(){
+	var r = Math.floor(Math.random()*255);
+	var b = Math.floor(Math.random()*255);
+	var g = Math.floor(Math.random()*255);
+	return [r, g, b];
+}
+
+function tostring(x){
+	return "rgb(" + x[0] + ", " + x[1] + ", " + x[2] + ")";
+}
+
+function yes(){
+	yesdata.push(last);
+	last = color();
+	$(".text")[0].style.color = tostring(last);
+}
+
+function no(){
+	console.log("no");
+	nodata.push(last);
+	last = color();
+	$(".text")[0].style.color = tostring(last);
+}
+
+function results(){
+	console.log("yes");
+	var out = "[";
+	for(var i = 0; i < yesdata.length; i++){
+		out += "["
+		for(var j = 0; j < 3; j++){
+			out += yesdata[i][j] + ", "
+		}
+		out += "]"
+	}
+	console.log(out + "]");
+	console.log("no");
+	out = "[";
+	for(var i = 0; i < nodata.length; i++){
+		out += "["
+		for(var j = 0; j < 3; j++){
+			out += nodata[i][j] + ", "
+		}
+		out += "]"
+	}
+	console.log(out + "]");
+}
+
+</script>
+<style>
+.stuff{
+	margin: 20px;
+	padding: 50px;
+	background-color: black;
+}
+</style>
+</head>
+<body>
+<div class="stuff">
+<span class="text">This is a bunch of text to read. This is a bunch of text to read. This is a bunch of text to read. This is a bunch of text to read. This is a bunch of text to read. This is a bunch of text to read. </span>
+</div>
+<button class="no" onclick="no()">Bad</button>
+<button class="yes" onclick="yes()">Nice</button>
+<button class="results" onclick="results()">Results</button>
+</body>
+</html>
