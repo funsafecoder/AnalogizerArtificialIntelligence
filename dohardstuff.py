@@ -3,6 +3,7 @@ import math
 import pathlib
 import multiprocessing
 import queue
+import sys
 
 p = pathlib.Path('tmp.gz')
 if not p.is_file():
@@ -125,12 +126,14 @@ def findBestMatch(testimage):
     return topten
     
 def printResults(results, actual):
+
     for x in range(len(results)):
         print(str(x) + ": " + str(results[x].image.number) + " at distance " + str(results[x].rank))
     
     print()
     
     print("The actual number was " + str(actual.number))
+    sys.stdout.flush()
 
 meta = gzip.open("tmp.meta.gz", "rb")
 test = gzip.open("test.gz", "rb")
@@ -152,6 +155,7 @@ rows = unt(test.read(4))
 cols = unt(test.read(4))
 
 def run(work_queue, lock):
+
     while True:
         data = work_queue.get(True, None)
         results = findBestMatch(data)
