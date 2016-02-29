@@ -1,7 +1,7 @@
 Meta-magic: 2049
 Magic Test: 2051
 Meta-magic Test: 2049
-
+<<<<<<< Updated upstream
 0: 4 at distance 1302.710635559563
 1: 4 at distance 1357.0070007188615
 2: 4 at distance 1469.7724313648014
@@ -28802,3 +28802,5 @@ The actual number was 5
 9: 7 at distance 949.9478933078382
 
 The actual number was 7
+=======
+>>>>>>> Stashed changes
